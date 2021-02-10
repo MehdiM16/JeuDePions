@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-package model;
 
 /**
  * Cette classe permet d'instancier des cases
@@ -9,7 +8,7 @@ package model;
 public class Case {
 	private char etat;
 	private int score;
-	private ArrayList Kuplets;
+	private ArrayList Kuplets; // liste des K-uplets concernés par la case
 
 	/**
 	 * constructeur pour initialiser des Cases
@@ -25,7 +24,7 @@ public class Case {
 	 * @return une chaîne de caractère qui va apparaître sur le terminal
 	 */
 	public String toString () {
-		return '[' + etat + ']' + ' ';
+		return "[" + etat + "] ";
 	}
 }
 

@@ -1,12 +1,10 @@
-package model;
-
 /**
  * cette classe permet d'instancier des plateaux de jeu
  * @version 1.0
  * @author les membres du projet
  */
 public class Plateau {
-	private Case[] tableau;
+	private Case[][] tableau;
 	private int longueur;
 	private int largeur;
 
@@ -19,19 +17,32 @@ public class Plateau {
 		tableau = new Case[m][n];
 		longueur = m;
 		largeur = n;
+		for (int i=0; i<longueur; i++) {
+			for (int j=0; j<largeur; j++) {
+				tableau[i][j] = new Case();
+			}
+		}
 	}
 	
 	/**
 	 * fournit une description textuelle d'un plateau 
+	 * @return le tableau sous forme de String
 	 */
-	public void toString () {
+	public String toString () {
+		String s = "";
 		for (int i=0; i<longueur; i++) {
 			for (int j=0; j<largeur; j++) {
-				System.out.print(tableau[i][j].toString());
+			s += tableau[i][j].toString();
 			}
-			System.out.print("\n");
+			s += "\n";
 		}
-		System.out.print("\n");
+		s+="\n";
+		return s;
+	}
+
+	public static void main (String[]args) {
+		Plateau p = new Plateau(10,10);
+		System.out.println(p.toString());
 	}
 }
 			

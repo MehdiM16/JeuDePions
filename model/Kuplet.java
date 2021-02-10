@@ -1,5 +1,3 @@
-package model;
-
 /**
  * Cette classe permet d'instancier des K-uplets suivant ce que veut l'user
  * @version 1.0
