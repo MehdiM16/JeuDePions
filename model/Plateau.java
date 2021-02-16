@@ -25,6 +25,13 @@ public class Plateau {
 	}
 	
 	/**
+	 * getter 
+	 * @return la grille de jeu
+	 */
+	public Case[][] getTableau () {
+		return tableau;
+	}
+	/**
 	 * fournit une description textuelle d'un plateau 
 	 * @return le tableau sous forme de String
 	 */

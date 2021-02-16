@@ -18,6 +18,22 @@ public class Case {
 		score = 0;
 		Kuplets = new ArrayList();
 	}
+	
+	/**
+	 * setter 
+	 * @param nouvel etat de la case
+	 */
+	public void setEtat (char c) {
+		etat = c;
+	}
+	
+	/**
+	 * getter
+	 * @return l'etat de la case
+	 */
+	public char getEtat () {
+		return etat;
+	}
 
 	/**
 	 * description textuelle d'une case
