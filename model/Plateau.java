@@ -31,6 +31,7 @@ public class Plateau {
 	public Case[][] getTableau () {
 		return tableau;
 	}
+	
 	/**
 	 * fournit une description textuelle d'un plateau 
 	 * @return le tableau sous forme de String
@@ -47,9 +48,5 @@ public class Plateau {
 		return s;
 	}
 
-	public static void main (String[]args) {
-		Plateau p = new Plateau(10,10);
-		System.out.println(p.toString());
-	}
 }
 			
