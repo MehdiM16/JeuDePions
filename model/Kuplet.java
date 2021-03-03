@@ -55,7 +55,7 @@ public class Kuplet {
 	 * @return nbrO le nombre de O dans le Kuplet
 	 */
 	public int evaluateO() {
-		int nbrO = 1;
+		int nbrO = 0;
 		for (int i=0; i<k; i++) {
 			if (tableau[i].getEtat()=='O')
 				nbrO++;
@@ -103,7 +103,7 @@ public class Kuplet {
 	} 
 	
 	public int evaluate() {
-		if (evaluateX() == 0 && evaluateO() == 1) { score = 7; } // Kuplet vide
+		if (evaluateX() == 0 && evaluateO() == 0) { score = 7; } // Kuplet vide
 		else {
 			if (evaluateX() == 0) {
 				score = scoreO(evaluateO());
