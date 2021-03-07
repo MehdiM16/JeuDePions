@@ -1,122 +1,117 @@
-/**
- * Cette classe permet d'instancier des K-uplets suivant ce que veut l'user
- * @version 1.0
- * @author les membres du projet
- */
+
 public class Kuplet {
-	private int score;
-	private Case[] tableau;
-	private int k;
-	
-	/**
-	 * constructeur pour initialiser des K-uplets
-	 * @param n le nombre de pions alignés pour gagner la partie
-	 */
-	public Kuplet (int n) {
-		score = 0;
-		tableau = new Case[n];
-		k = n;
-	}
-	
-	/**
-	 * getter 
-	 * @return score du Kuplet
-	 */
-	public int getScore() {
-		return score;
-	}
-	
-	/**
-	 * setter
-	 * @param nouveau score du Kuplet
-	 */
-	public void setScore(int score) {
-		this.score = score;
-	}
+    private int score = 0;
+    private Case[] tableau;
+    private int k;
 
-	/**
-	 * getter
-	 * @return le tableau des cases
-	 */
-	public Case[] getTableau() {
-		return tableau;
-	}
+    public Kuplet(int n) {
+        this.tableau = new Case[n];
+        this.k = n;
+    }
 
-	/**
-	 * setter
-	 * @param modifie le tableau des cases
-	 */
-	public void setTableau(Case[] tableau) {
-		this.tableau = tableau;
-	}
-	
-	/**
-	 * méthode qui compte le nombre de 'O' dans un kuplet
-	 * @return nbrO le nombre de O dans le Kuplet
-	 */
-	public int evaluateO() {
-		int nbrO = 0;
-		for (int i=0; i<k; i++) {
-			if (tableau[i].getEtat()=='O')
-				nbrO++;
-		}
-		
-		return nbrO;
-	}
-	
-	/**
-	 * méthode qui compte le nombre de 'X' dans un kuplet
-	 * @return nbrX le nombre de X dans le Kuplet
-	 */
-	public int evaluateX() {
-		int nbrX = 0;
-		for (int i=0; i<k; i++) {
-			if (tableau[i].getEtat()=='X')
-				nbrX++;
-		}
-		
-		return nbrX;
-	}
-	
-	/**
-	 * fait parvenir le score d'un Kuplet en fonction du nombre de pions alignes
-	 * @param le nombre de pions deja alignes
-	 * @return le score du Kuplet
-	 */
-	public int scoreX (int x) {
-		if (x==1) return 15;
-		else if (x==2) return 400;
-		else if (x==3) return 1800;
-		else return 100000;
-	} 
-	
-	/**
-	 * fait parvenir le score d'un Kuplet en fonction du nombre de pions alignes
-	 * @param le nombre de pions deja alignes
-	 * @return le score du Kuplet
-	 */
-	public int scoreO (int o) {
-		if (o==1) return 35;
-		else if (o==2) return 800;
-		else if (o==3) return 15000;
-		else return 800000;
-	} 
-	
-	public int evaluate() {
-		if (evaluateX() == 0 && evaluateO() == 0) { score = 7; } // Kuplet vide
-		else {
-			if (evaluateX() == 0) {
-				score = scoreO(evaluateO());
-			}	
-			else if (evaluateO() == 0) {
-			    	score = scoreX(evaluateX());
-			 }
-			else score = 0; // s'il y a au moins 1 pion 'X' ET au moins un pion 'O'
-		}
-		return score;
-	}
+    public int evaluate() {
+        if (this.evaluateX() == 0 && this.evaluateO() == 1) {
+            if (this.k <= 5) {
+                this.score = 7;
+            } else {
+                this.score = 1;
+            }
+        } else if (this.evaluateX() == 0) {
+            this.score = this.evaluateO();
+        } else if (this.evaluateO() == 1) {
+            this.score = this.evaluateX();
+        } else {
+            this.score = 0;
+        }
 
+        return this.score;
+    }
 
+    public int evaluateX() {
+        int scoreX = 0;
 
+        for(int i = 0; i < this.k; ++i) {
+            if (this.tableau[i].getEtat() == 'X') {
+                scoreX += 2;
+            }
+        }
 
+        if (this.k <= 5) {
+            switch(scoreX) {
+            case 2:
+                scoreX = 15;
+            case 3:
+            case 5:
+            case 7:
+            case 9:
+            default:
+                break;
+            case 4:
+                scoreX = 400;
+                break;
+            case 6:
+                scoreX = 1800;
+                break;
+            case 8:
+                scoreX = 100000;
+                break;
+            case 10:
+                scoreX = 800001;
+            }
+        }
+
+        return scoreX;
+    }
+
+    public int evaluateO() {
+        int scoreO = 1;
+
+        for(int i = 0; i < this.k; ++i) {
+            if (this.tableau[i].getEtat() == 'O') {
+                scoreO += 2;
+            }
+        }
+
+        if (this.k <= 5) {
+            switch(scoreO) {
+            case 3:
+                scoreO = 35;
+            case 4:
+            case 6:
+            case 8:
+            case 10:
+            default:
+                break;
+            case 5:
+                scoreO = 800;
+                break;
+            case 7:
+                scoreO = 15000;
+                break;
+            case 9:
+                scoreO = 800000;
+                break;
+            case 11:
+                scoreO = 800002;
+            }
+        }
+
+        return scoreO;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public Case[] getTableau() {
+        return this.tableau;
+    }
+
+    public void setTableau(Case[] tableau) {
+        this.tableau = tableau;
+    }
 }
