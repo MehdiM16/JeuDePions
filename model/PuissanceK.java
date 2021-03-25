@@ -35,7 +35,7 @@ public class PuissanceK extends Jeu {
 				}
 				else {
 					point[1] = colonne;
-					ligne =  dernCaseVide(point[1]);	// appel à la méthode dernCaseVide
+					ligne =  dernCaseVide(point[1]);	// appel la méthode dernCaseVide
 					if (ligne<0) {		// si ligne = -1 alors pas de case vide dans cette colonne
 						System.out.println("Pas de case vide dans cette colonne");
 					}
