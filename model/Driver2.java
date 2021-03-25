@@ -6,19 +6,19 @@ import java.util.Scanner;
  * @version 2.0
  * @author l'équipe
  */
-public class Driver {
-	int winner = 0;
-	Scanner sc;
-	Jeu jeu = null;
-	int lon, larg, pions;
-	int choix = 0;
+public class Driver2 {
+	static int winner = 0;
+	static Jeu jeu = null;
+	static int lon, larg, pions;
+	static int choix = 0;
 	int maxX = -1;
 	int maxY = -1;
+	boolean endGame = false;
 	
 	/**
 	 * permet de collecter les caracteristiques du jeu
 	 */
-	public void caracteristiques_game () {
+	public static void caracteristiques_game (Scanner sc) {
 		while (true) {
 			try {
 				System.out.println("Bonjour, vous allez jouer au Gomoku contre l'ordi. Quelle sera la longueur du plateau ?");
@@ -81,12 +81,60 @@ public class Driver {
 		}
 	}
 	
+	/**
+	 * met à jour le champ aquiletour du champ jeu afin de voir qui commence
+	 */
+	public void tirageausort_aqlt (Random random) {
+		int res = random.nextInt(2);
+		jeu.aquiletour = res == 0 ? true : false;
+	}	
+	
+	public void play (Scanner sc) {
+		if (jeu.aquiletour) {
+			int[]xy = jeu.prompt(sc);
+			System.out.println("Vous avez jou� sur ("+xy[0]+","+" "+xy[1]+")");
+			jeu.tourdejeu(xy[0], xy[1]);
+		}
+		else {
+			ArrayList<XY> maxEvals = jeu.getMaxEvals();
+			ArrayList<XY> bestEvals = jeu.getBestEvals(maxEvals); 
+			int rand = r.nextInt(bestEvals.size());
+		        XY choice = bestEvals.get(rand);
+		        System.out.println("L'ordinateur a jou� sur ("+choice.x+","+" "+choice.y+")");
+		        jeu.tourOrdinateur(choice.x, choice.y);
+		}
+		int highEval = jeu.getHighEval();
+		if (highEval == maxX) {
+			winner = 1;
+			endGame = true;
+		}
+		else if (highEval == maxY) {
+			winner = 0;
+			endGame = true;
+		}
+		else if (!endGame && jeu.pasDeCaseVide()) {
+			winner = 2;
+			endGame = true;
+		}
+		System.out.println(jeu.p.toString());
+	}
+	
 	public static void main (String[]args) {
-		sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		Random r = new Random();
 		caracteristiques_game();
 		if (choix == 1) { jeu = new Jeu (lon, larg, pions); }
 		else if (choix == 2) { jeu = new PuissanceK (lon, larg, pions); }
 		maxscores_update();
+		jeu.p.toString();
+		tirageausort_aqlt(r);
+		while (!endGame) {
+			play(sc);
+		}
+		if (winner==0) { System.out.println("Echec! Vous avez perdu face à l'ordinateur."); }
+		else if (winner==1) { System.out.println("Félicitations! Vous avez gagné"); }
+		else System.out.println("Partie nulle!");
 		sc.close();
 	}
+	
+}
