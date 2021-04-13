@@ -146,7 +146,11 @@ public class NewDriver {
 				System.out.println("Vous avez joué sur ("+xy[0]+","+" "+xy[1]+")");
 				jeu.tourdejeu(xy[0], xy[1]);	
 			}
-			else {		
+			else {	
+				if (jeu.p.sameScore()) {
+					XY res = jeu.p.getCaseMieuxPlacee();
+					jeu.tourOrdinateur(res.x, res.y);
+				}	
 				ArrayList<XY> maxEvals = jeu.getMaxEvals();
 				ArrayList<XY> bestEvals = jeu.getBestEvals(maxEvals); 
 				int rand = r.nextInt(bestEvals.size());

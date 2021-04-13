@@ -253,7 +253,7 @@ public class Jeu {
 		}
 		return true;
 	}
-
+	
 }
 		
 		

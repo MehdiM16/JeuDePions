@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class Case {
 	private char etat;
 	private int score;
-	private ArrayList<Kuplet> Kuplets; // liste des K-uplets concernes par la case
+	private ArrayList<Kuplet> Kuplets;
+	private int nbrKuplets; // liste des K-uplets concernes par la case
 
 	/**
 	 * constructeur pour initialiser des Cases
@@ -17,6 +18,7 @@ public class Case {
 		etat = ' ';
 		score = 0;
 		Kuplets = new ArrayList<Kuplet>();
+		nbrKuplets = 0;
 	}
 	
 	/**
@@ -25,6 +27,14 @@ public class Case {
 	 */
 	public void setEtat (char c) {
 		etat = c;
+	}
+	
+	/**
+	 * setter
+	 * @return le nombre de Kuplets concernés par la case
+	 */
+	public int getNbrKuplets () {
+		return nbrKuplets;
 	}
 	
 	/**
@@ -72,7 +82,7 @@ public class Case {
 	 * @return une chaîne de caractère qui va apparaitre sur le terminal
 	 */
 	public String toString () {
-		return "[" + etat + "] ";
+		return "[" + etat + "] " + String.valueOf(score) + " ";
 	}
 	
 	public int evaluate() {
