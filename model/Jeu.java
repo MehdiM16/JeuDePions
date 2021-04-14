@@ -147,7 +147,7 @@ public class Jeu {
 			for (int j=0; j<largeur; j++) {		// égale à l'évaluation maximale, on boucle donc pour 
 				if (tmp[i][j].getEtat()==' ') {		// remplir toutes ces cases dans notre tableau 'points'
 					if (max==tmp[i][j].evaluate()) {
-						XY xy = new XY(i, j, max);
+						XY xy = new XY(i, j, max, tmp[i][j].getNbrKuplets());
 						points.add(xy);
 					}
 				}

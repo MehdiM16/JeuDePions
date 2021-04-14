@@ -53,20 +53,46 @@ public class Plateau {
 	public XY getCaseMieuxPlacee () {
 		int maxKuplets = 0;
 		XY res = new XY (-1,-1,-1,-1);
-		Case[][]tab = p.getTableau();
 		for (int i=0; i<longueur; i++) {
 			for (int j=0; j<largeur; j++) {
-				if (tab[i][j].getNbrKuplets() > maxKuplets) {
-					maxKuplets = tab[i][j].getNbrKuplets();
+				if (tableau[i][j].getNbrKuplets() > maxKuplets) {
+					maxKuplets = tableau[i][j].getNbrKuplets();
 					res.x = i;
 					res.y = j;
-					res.score = tab[i][j].score;
+					res.score = tableau[i][j].getScore();
 					res.nbrKuplets = maxKuplets;
 				}
 			}
 		}
 		return res;
 	}
+	
+	
+	public void initNbKuplets(int k) {
+		for(int i = 0; i < longueur; i++) {
+			for(int j = 0; j < largeur; j++) {
+				int tot = 0;
+				if(i - k + 1 >= 0 && i + k - 1 < longueur) {//on compte les kuplet en longueur
+					tot += k;
+				} else if(i - k + 1 < 0) {
+					tot += i+1;
+				} else if(i + k - 1 >= longueur) {
+					tot += longueur-i;
+				}
+				if(j - k + 1 >= 0 && j + k - 1 < largeur) {//on compte les kuplet en largeur
+					tot += k;
+				} else if(j - k + 1 < 0) {
+					tot += j+1;
+				} else if(j + k - 1 >= largeur) {
+					tot += largeur-j;
+				}
+				//on ne compte pas les kuplet en diagonales 
+				//car les cases possedant le plus de kuplet en longueur et largeur en possederons forcement plus en rajoutant les kuplet en diagonales 
+				tableau[i][j].setNbrKuplets(tot);
+			}
+		}
+	}
+			
 		
 		
 	/**

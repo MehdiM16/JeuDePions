@@ -18,7 +18,6 @@ public class Case {
 		etat = ' ';
 		score = 0;
 		Kuplets = new ArrayList<Kuplet>();
-		nbrKuplets = 0;
 	}
 	
 	/**
@@ -36,6 +35,12 @@ public class Case {
 	public int getNbrKuplets () {
 		return nbrKuplets;
 	}
+
+
+    public  int setNbrKuplets(int n) {
+    	nbrKuplets = n;
+    	return nbrKuplets;
+    }
 	
 	/**
 	 * getter
@@ -81,8 +86,10 @@ public class Case {
 	 * description textuelle d'une case
 	 * @return une chaîne de caractère qui va apparaitre sur le terminal
 	 */
+	
+	
 	public String toString () {
-		return "[" + etat + "] " + String.valueOf(score) + " ";
+		return "[" + etat + "] ";
 	}
 	
 	public int evaluate() {

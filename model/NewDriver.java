@@ -140,6 +140,7 @@ public class NewDriver {
 		maxX = t2[0];
 		maxY = t2[1];
 		System.out.println(jeu.p.toString());
+		boolean start = true;
 		while (!endGame) {
 			if (jeu.aquiletour) {
 				int xy[] = jeu.promptXY(sc);
@@ -147,16 +148,20 @@ public class NewDriver {
 				jeu.tourdejeu(xy[0], xy[1]);	
 			}
 			else {	
-				if (jeu.p.sameScore()) {
-					XY res = jeu.p.getCaseMieuxPlacee();
-					jeu.tourOrdinateur(res.x, res.y);
-				}	
-				ArrayList<XY> maxEvals = jeu.getMaxEvals();
-				ArrayList<XY> bestEvals = jeu.getBestEvals(maxEvals); 
-				int rand = r.nextInt(bestEvals.size());
-				XY choice = bestEvals.get(rand);	
-				System.out.println("L'ordinateur a joué sur ("+choice.x+","+" "+choice.y+")");
-				jeu.tourOrdinateur(choice.x, choice.y);
+				if (jeu.p.sameScore() || start) {
+					jeu.p.initNbKuplets(pions);
+				    XY res = jeu.p.getCaseMieuxPlacee();
+				    jeu.tourOrdinateur(res.x, res.y);
+				    start = false;
+				}
+				else {
+				    ArrayList<XY> maxEvals = jeu.getMaxEvals();
+				    ArrayList<XY> bestEvals = jeu.getBestEvals(maxEvals); 
+				    int rand = r.nextInt(bestEvals.size());
+				    XY choice = bestEvals.get(rand);	
+				    System.out.println("L'ordinateur a joué sur ("+choice.x+","+" "+choice.y+")");
+				    jeu.tourOrdinateur(choice.x, choice.y);
+				}
 			}
 			int highEval = jeu.getHighEval();
 			if (highEval==maxX) {
