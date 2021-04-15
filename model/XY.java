@@ -13,7 +13,7 @@ public class XY {
 	/**
 	 * constructeur
 	 * @param x et y les coordonnees d'une case
-	 * @param score de la case
+	 * @param score de la case et nombre de Kuplets sur la case
 	 */
 	public XY(int x, int y, int score, int nbrKuplets) {
 		this.x = x;
@@ -21,5 +21,16 @@ public class XY {
 		this.score = score;
 		this.nbrKuplets = nbrKuplets;
 	}
+	
+	/**
+	 * constructeur
+	 * @param x et y les coordonnees d'une case
+	 * @param score de la case
+	 */
+	 public XY(int x, int y, int score) {
+		this.x = x;
+		this.y = y;
+		this.score = score;
+	 }
 }
 
