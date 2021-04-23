@@ -96,7 +96,8 @@ public class Jeu {
 			}
 			else {
 				tmp[a][b].setEtat('X');
-				aquiletour = false;
+				//aquiletour = false;
+				
 			}
 		}
 	}		

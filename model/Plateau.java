@@ -1,3 +1,5 @@
+//package model;
+
 /**
  * cette classe permet d'instancier des plateaux de jeu
  * @version 1.0
@@ -30,6 +32,14 @@ public class Plateau {
 	 */
 	public Case[][] getTableau () {
 		return tableau;
+	}
+	
+	public int getLongueur() {
+		return longueur;
+	}
+	
+	public int getLargeur() {
+		return largeur;
 	}
 	
 	/**
