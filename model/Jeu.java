@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -7,11 +9,11 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Jeu {
-	Plateau p;
-	int longueur;
-	int largeur;
-	int k;
-	boolean aquiletour; // true si c'est au joueur de jouer
+	public Plateau p;
+	public int longueur;
+	public int largeur;
+	public int k;
+	public boolean aquiletour; // true si c'est au joueur de jouer
 	
 	/**
 	 * permet d'instancier une partie entre un joueur et l'ordinateur

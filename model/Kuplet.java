@@ -1,3 +1,5 @@
+package model;
+
 
 public class Kuplet {
     private int score = 0;

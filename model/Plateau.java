@@ -1,4 +1,4 @@
-//package model;
+package model;
 
 /**
  * cette classe permet d'instancier des plateaux de jeu

@@ -1,3 +1,6 @@
+package model;
+
+
 /**
  * la classe XY qui représente les cordonnées x et y d'une case
  * @author les membres du projet

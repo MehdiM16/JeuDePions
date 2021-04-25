@@ -1,6 +1,9 @@
+package view;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+
 public class TestInterfaceAccueil {
     JFrame window;
     JPanel panel;
