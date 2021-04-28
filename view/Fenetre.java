@@ -24,8 +24,6 @@ public class Fenetre extends JFrame{
      JLabel p= new JLabel("Votre pseudo:");
      JLabel espace= new JLabel("                                           ");
      
-     JLabel go= new JLabel ("C'est partie! Mais avant veuillez dÃ©finir la longueur largeur et nombre de pion Ã  alignier:");
-     
      //pour les getteurs de dimensions
      private JComboBox xk = new JComboBox();
      private JComboBox xlong = new JComboBox();
@@ -133,7 +131,7 @@ public class Fenetre extends JFrame{
         //panel gomoku
         JLabel longeurT=new JLabel("  longeur  ");
        JLabel largeurT=new JLabel("  largeur  ");
-       JLabel nbrkT =new JLabel(" nombre de pions Ã  alignier ");
+       JLabel nbrkT =new JLabel(" nombre de pions a  alignier ");
  
        JLabel regleP=new JLabel("Regles du Jeux");
        JLabel regle1=new JLabel("Du Gomoku: ");
@@ -141,9 +139,9 @@ public class Fenetre extends JFrame{
   
        regle1.setFont(new Font(Font.SERIF, Font.ITALIC,70));
        
-       JLabel reglePK= new JLabel( "<html>"+"Le but du jeux est d'etre le premier Ã  avoir "
-    		   +" ligniÃ© k pions."+"<br>"+ "Ici k est le nombre de pions Ã  alignier"+"</br>"
-       		+ ". Pour commencer la partie veuillez complÃ©tez: "+"</br></html>");    
+       JLabel reglePK= new JLabel( "<html>"+"Le but du jeux est d'etre le premier a  avoir "
+    		   +" lignie k pions."+"<br>"+ "Ici k est le nombre de pions a alignier"+"</br>"
+       		+ ". Pour commencer la partie veuillez completez: "+"</br></html>");    
        regle1.setFont(new Font(Font.SERIF, Font.ITALIC,60));
        reglePK.setFont(new Font(Font.SERIF, Font.ITALIC,20));
 
@@ -172,7 +170,7 @@ gomoku.add(nbrkT);
 
   JLabel longeurp=new JLabel("  longeur  ");
   JLabel largeurp=new JLabel("  largeur  ");
-  JLabel nbrkp =new JLabel(" nombre de pions Ã  alignier ");
+  JLabel nbrkp =new JLabel(" nombre de pions a  alignier ");
 
   JLabel reglep=new JLabel("Regles du Jeux");
   JLabel reglepp=new JLabel("Du PuissanceK: ");
@@ -299,13 +297,13 @@ this.puissancek.add(retourp);
     //Ecouteur de ton bouton
     public class EcouteurBoutonGomoku implements ActionListener{
         public void actionPerformed(ActionEvent clic) {
-            //Appelle la mÃ©thode de changement de panel
+            //Appelle la methode de changement de panel
             Fenetre.this.allerGomoku();
         }
     }
     public class EcouteurBoutonRetourMenu implements ActionListener{
         public void actionPerformed(ActionEvent clic) {
-            //Appelle la mÃ©thode de changement de panel
+            //Appelle la methode de changement de panel
             Fenetre.this.retourMenu();
         }
     }
@@ -315,7 +313,7 @@ this.puissancek.add(retourp);
     //Lanceur
     public static void main(String[] args){
         Fenetre fen = new Fenetre();
-      //  System.out.println(fen.getK(kG.getSelectedItem().hashCode()));
+     
       
     }
 }
