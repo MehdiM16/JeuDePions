@@ -98,7 +98,7 @@ public class Fenetre extends JFrame{
     	  largGp.addItem(" ");
     	  longGp.addItem(" ");
     	  kGp.addItem(" ");
-    	  for(int i=1; i<16;i++) {
+    	  for(int i=1; i<40;i++) {
     	  kGp.addItem(i);
     	  longGp.addItem(i);
     	  largGp.addItem(i);
