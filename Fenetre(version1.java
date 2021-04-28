@@ -8,7 +8,7 @@ import java.io.*;
 
  
  
-public class Fenetre extends JFrame{
+public class FenetreVersion1 extends JFrame{
 	
     JPanel menu = new JPanel();
     JPanel gomoku= new JPanel();
@@ -159,6 +159,6 @@ public class Fenetre extends JFrame{
     
     //Lanceur
     public static void main(String[] args){
-        Fenetre fen = new Fenetre();
+        FenetreVersion1 fen = new FenetreVersion1();
     }
 }
