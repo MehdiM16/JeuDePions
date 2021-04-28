@@ -98,7 +98,7 @@ public class Jeu {
 			}
 			else {
 				tmp[a][b].setEtat('X');
-				//aquiletour = false;
+				aquiletour = false;
 				
 			}
 		}
@@ -113,6 +113,7 @@ public class Jeu {
 			Case[][] tmp = p.getTableau();
 			if (tmp[a][b].getEtat() != ' ') {
 				System.out.println("erreur, la case choisie est deja remplie");
+				//System.out.println(a + "**************************" + b);
 			}
 			else {
 				tmp[a][b].setEtat('O');
