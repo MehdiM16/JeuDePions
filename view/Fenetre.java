@@ -141,7 +141,7 @@ public class Fenetre extends JFrame{
        
        JLabel reglePK= new JLabel( "<html>"+"Le but du jeux est d'etre le premier a  avoir "
     		   +" lignie k pions."+"<br>"+ "Ici k est le nombre de pions a alignier"+"</br>"
-       		+ ". Pour commencer la partie veuillez completez: "+"</br></html>");    
+       		+ ". Pour commencer la partie veuillez completer: "+"</br></html>");    
        regle1.setFont(new Font(Font.SERIF, Font.ITALIC,60));
        reglePK.setFont(new Font(Font.SERIF, Font.ITALIC,20));
 
@@ -181,7 +181,7 @@ gomoku.add(nbrkT);
 		  +"k pions alignes."+"<br>"+" Il vous suffit de selelectionner une colonne"+"<br>"
 		  +"car les pions tombent par gravitee"+"<br>"+
 		  "Ici k est le nombre de pions Ã  alignier."+"<br>"
-			+ "Pour commencer la partie veuillez completez: "+"</br></html>");    
+			+ "Pour commencer la partie veuillez completer: "+"</br></html>");    
   reglepp.setFont(new Font(Font.SERIF, Font.ITALIC,80));
   reglePp.setFont(new Font(Font.SERIF, Font.ITALIC,20));
 
@@ -208,7 +208,7 @@ this.puissancek.add(retourp);
 
 //Couleur des panels (pour voir le changement)
         
-        this.puissancek.setBackground(Color.red);
+        this.puissancek.setBackground(Color.BLUE);
         this.menu.setBackground(Color.lightGray);
         this.gomoku.setBackground(Color.pink);
         
