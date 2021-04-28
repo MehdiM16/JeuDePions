@@ -219,7 +219,7 @@ this.puissancek.add(retourp);
     
     class ItemState implements ItemListener{
         public void itemStateChanged(ItemEvent e) {
-      System.out.println(getK());
+       getK();
        getLarg();
        getLong();
 
