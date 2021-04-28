@@ -234,6 +234,7 @@ public class Partie {
     
     public static void main(String[] args) {
     	Partie p = new Partie(new Jeu(10,10,4));
+	Partie go= new Partie(new Jeu(Fenetre.getlong(),Fenetre.getlarg(),Fenetre.getk()));
     }
     
     
