@@ -179,11 +179,11 @@ gomoku.add(nbrkT);
   reglep.setFont(new Font(Font.SERIF, Font.ITALIC,105));
   
   
-  JLabel reglePp= new JLabel( "<html>"+"Le but du jeux est d'etre le premier Ã  avoir "
-		  +"k pions alignÃ©s."+"<br>"+" Il vous suffit de sÃ©lÃ©lectionner une colonne"+"<br>"
-		  +"car les pions tombent par gravitÃ©e"+"<br>"+
+  JLabel reglePp= new JLabel( "<html>"+"Le but du jeux est d'etre le premier a  avoir "
+		  +"k pions alignes."+"<br>"+" Il vous suffit de selelectionner une colonne"+"<br>"
+		  +"car les pions tombent par gravitee"+"<br>"+
 		  "Ici k est le nombre de pions Ã  alignier"+"<br>"
-			+ ". Pour commencer la partie veuillez complÃ©tez: "+"</br></html>");    
+			+ ". Pour commencer la partie veuillez completez: "+"</br></html>");    
   reglepp.setFont(new Font(Font.SERIF, Font.ITALIC,80));
   reglePp.setFont(new Font(Font.SERIF, Font.ITALIC,20));
 
