@@ -71,7 +71,7 @@ public class Fenetre extends JFrame{
   largG.addItem(" ");
   longG.addItem(" ");
   kG.addItem(" ");
-  for(int i=1; i<16;i++) {
+  for(int i=1; i<41;i++) {
   kG.addItem(i);
   longG.addItem(i);
   largG.addItem(i);
@@ -96,7 +96,7 @@ public class Fenetre extends JFrame{
     	  largGp.addItem(" ");
     	  longGp.addItem(" ");
     	  kGp.addItem(" ");
-    	  for(int i=1; i<40;i++) {
+    	  for(int i=1; i<41;i++) {
     	  kGp.addItem(i);
     	  longGp.addItem(i);
     	  largGp.addItem(i);
@@ -180,7 +180,7 @@ gomoku.add(nbrkT);
   JLabel reglePp= new JLabel( "<html>"+"Le but du jeux est d'etre le premier a  avoir "
 		  +"k pions alignes."+"<br>"+" Il vous suffit de selelectionner une colonne"+"<br>"
 		  +"car les pions tombent par gravitee"+"<br>"+
-		  "Ici k est le nombre de pions Ã  alignier."+"<br>"
+		  "Ici k est le nombre de pions a  alignier."+"<br>"
 			+ "Pour commencer la partie veuillez completer: "+"</br></html>");    
   reglepp.setFont(new Font(Font.SERIF, Font.ITALIC,80));
   reglePp.setFont(new Font(Font.SERIF, Font.ITALIC,20));
