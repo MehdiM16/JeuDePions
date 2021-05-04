@@ -167,6 +167,7 @@ public class Fenetre extends JFrame{
 	
 	
 	this.gomoku.add(ok);
+	ok.addActionListener(new Ecouteurok());
 	this.gomoku.add(retour);
 	
 	
@@ -320,7 +321,12 @@ public class Fenetre extends JFrame{
       
         }
     }
-   
+   public class Ecouteurok implements ActionListener{
+	   public void actionPerformed(ActionEvent clic){
+		   dispose();
+		   new Partie(new Jeu(getLong(),getLarg(),getK()));
+	   }
+   }
   
     
     //Lanceur
