@@ -20,7 +20,7 @@ public class Partie {
     private JFrame frame;
     private Jeu game;
     private JButton[][] boutton;
-    private JButton menu, botTour, parametre;
+    private JButton menu, botTour;
 
 
     public Partie(Jeu j) {
@@ -36,6 +36,8 @@ public class Partie {
     	draw();
     }
 
+
+    
     
     public void draw() {
     	panel = new JPanel(new BorderLayout());
@@ -56,19 +58,14 @@ public class Partie {
     }
     
     
-    /*
-     * FAIRE LES REPAINT ET REVALIDATE
-     * FAIRE FONCTION DRAW DE SORTE QUE LE LE JOUEUR PUISSE JOUER TOUT SEUL POUR L'INSTANT
-     */
-
+    
     
     public void creation_boutton() {
-    	haut = new JPanel(new GridLayout(1,3));
+    	haut = new JPanel(new GridLayout(1,2));
     	menu = new JButton("Menu");
-    	parametre = new JButton("Changer de plateau");
     	botTour = new JButton("Bot Joue");
+	menu.addActionListener((event) -> {frame.dispose(); new Fenetre();});
     	haut.add(menu);
-    	haut.add(parametre);
     	haut.add(botTour);
     	
     	panel.add(haut, BorderLayout.NORTH);
@@ -90,14 +87,18 @@ public class Partie {
     			if(tab[i][j].getEtat() == ' ') cellule.setBackground(new Color(255,255,255));
     			else if(tab[i][j].getEtat() == 'X') cellule.setBackground(new Color(255,0,0));
     			else if(tab[i][j].getEtat() == 'O') cellule.setBackground(new Color(0,0,255));
-    			if (game.aquiletour && !victoire()) cellule.addActionListener((event) -> {System.out.println("le chouch"); game.tourdejeu(a,b); draw();});
+    			if (game.aquiletour && !victoire()) {
+			    if(game instanceof PuissanceK) {
+				cellule.addActionListener((event) -> {game.tourdejeu(game.casePossible(b),b); draw();});
+			    } else {
+				cellule.addActionListener((event) -> {game.tourdejeu(a,b); draw();});
+			    }
+			}
     			else cellule.setEnabled(false);
     			boutton[i][j] = cellule;
     			
     		}
     	}
-    	//panel.add(grille, BorderLayout.CENTER);
-    	//frame.setContentPane(panel);
     }
     
     
@@ -117,43 +118,37 @@ public class Partie {
     
     public void bot_joue() {
     	boolean endGame = false;
-    	//boolean start = true;
     	int maxX = -1;
-		int maxY = -1;
-		int winner = 0;
+	int maxY = -1;
+	int winner = 0;
     	Random r = new Random();
     	if(!game.aquiletour && !victoire()) {
-	    	if (game.p.sameScore()) {
-	    		System.out.println("je suis le numero 1");
-				game.p.initNbKuplets(game.k);
-			    XY res = game.p.getCaseMieuxPlacee();
-			    botTour.addActionListener((event) -> {game.tourOrdinateur(res.x, res.y); draw();});
-			    //jeu.tourOrdinateur(res.x, res.y);
-			    //start = false;
-			}
-			else {
-			    ArrayList<XY> maxEvals = game.getMaxEvals();
-			    ArrayList<XY> bestEvals = game.getBestEvals(maxEvals); 
-			    int rand = r.nextInt(bestEvals.size());
-			    XY choice = bestEvals.get(rand);	
-			    //System.out.println("L'ordinateur a joué sur ("+choice.x+","+" "+choice.y+")");
-			    //jeu.tourOrdinateur(choice.x, choice.y);
-			    botTour.addActionListener((event) -> {
-			    	game.tourOrdinateur(choice.x, choice.y);
-			    	System.out.println("L'ordinateur a joué sur ("+choice.x+","+" "+choice.y+")"); 
-			    	draw();
-			    });
-			}
+	    if (game.p.sameScore()) {
+		game.p.initNbKuplets(game.k);
+		XY res = game.p.getCaseMieuxPlacee();
+		botTour.addActionListener((event) -> {game.tourOrdinateur(res.x, res.y); draw();});
+	    }
+	    else {
+		ArrayList<XY> maxEvals = game.getMaxEvals();
+		ArrayList<XY> bestEvals = game.getBestEvals(maxEvals); 
+		int rand = r.nextInt(bestEvals.size());
+		XY choice = bestEvals.get(rand);	
+		//System.out.println("L'ordinateur a joué sur ("+choice.x+","+" "+choice.y+")");
+		botTour.addActionListener((event) -> {
+			game.tourOrdinateur(choice.x, choice.y);
+			System.out.println("L'ordinateur a joué sur ("+choice.x+","+" "+choice.y+")"); 
+			draw();
+		    });
+	    }
     	}
     	else {
-    		botTour.setEnabled(false);
+	    botTour.setEnabled(false);
     	}
     	int highEval = game.getHighEval();
     }
     
     
     public boolean victoire() {
-    	System.out.println("nous sommes au coeur du probleme");
     	NewDriver driv = new NewDriver();
     	int[] res = driv.MAJscores(game.k);
     	int maxX = res[0];
@@ -232,10 +227,10 @@ public class Partie {
     }
     */
     
-    public static void main(String[] args) {
-    	Partie p = new Partie(new Jeu(10,10,4));
-	Partie go= new Partie(new Jeu(Fenetre.getLong(),Fenetre.getLarg(),Fenetre.getK()));
-    }
+    /*public static void main(String[] args) {
+    	Partie p = new Partie(new PuissanceK(10,10,4));
+	//Partie go= new Partie(new Jeu(Fenetre.getLong(),Fenetre.getLarg(),Fenetre.getK()));
+	}*/
     
     
 }
