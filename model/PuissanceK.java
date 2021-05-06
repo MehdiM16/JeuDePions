@@ -117,6 +117,16 @@ public class PuissanceK extends Jeu {
 		}
 		return true;
 	}
+	
+	
+	public int casePossible(int colonne) {
+		Case[][] tmp = p.getTableau();
+		int ligne = longueur - 1;
+		while(tmp[ligne][colonne].getEtat() != ' ' && ligne >= 0) {
+			ligne = ligne -1;
+		}
+		return ligne;
+	}
 
 
 	

@@ -86,7 +86,7 @@ public class Jeu {
 	}
 
 	
-	/**
+	/** 
 	 * permet d'exécuter un tour de la part du joueur
 	 * @param a et b les coordonnées de la case où il faut jouer
 	 */
@@ -102,6 +102,13 @@ public class Jeu {
 				
 			}
 		}
+	}
+	
+	
+	public int casePossible(int colonne) {
+		if(this instanceof PuissanceK) {
+			return this.casePossible(colonne);
+		} else return -1;
 	}		
 	
 	/**
