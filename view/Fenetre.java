@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-
+import model.*;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
