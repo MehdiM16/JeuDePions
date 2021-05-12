@@ -86,12 +86,14 @@ public class Case {
 	 * description textuelle d'une case
 	 * @return une chaîne de caractère qui va apparaitre sur le terminal
 	 */
-	
-	
 	public String toString () {
 		return "[" + etat + "] ";
 	}
 	
+	/**
+	 * calcul du score d'une case
+	 * @return la somme des scores des Kuplets
+	 */
 	public int evaluate() {
 		int eval = Kuplets.get(0).evaluate();
 		for (int i=1; i<Kuplets.size(); i++) {
