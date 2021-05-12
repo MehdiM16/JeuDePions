@@ -67,7 +67,9 @@ public class Plateau {
 		return res;
 	}
 	
-	
+	/**
+	 * calcule le nombre de Kuplets par case et met à jour l'attribut nbrKuplets 
+	 */
 	public void initNbKuplets(int k) {
 		for(int i = 0; i < longueur; i++) {
 			for(int j = 0; j < largeur; j++) {
@@ -87,7 +89,7 @@ public class Plateau {
 					tot += largeur-j;
 				}
 				//on ne compte pas les kuplet en diagonales 
-				//car les cases possedant le plus de kuplet en longueur et largeur en possederons forcement plus en rajoutant les kuplet en diagonales 
+				//car les cases possedant le plus de kuplets en longueur et largeur en possederont forcement plus en rajoutant les kuplet en diagonales 
 				tableau[i][j].setNbrKuplets(tot);
 			}
 		}
