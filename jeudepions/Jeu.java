@@ -27,6 +27,9 @@ public class Jeu {
 		initialize();
 	}
 	
+	/**
+	 * permet d'initialiser les Kuplets
+	 */
 	public void initialize() {
 		Case[][] tmp = p.getTableau();	// prend les cases du plateau dans une variable temporaire
 		for (int i=0; i<longueur; i++) {	// parcourt les lignes
