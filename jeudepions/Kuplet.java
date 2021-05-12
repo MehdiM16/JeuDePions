@@ -1,14 +1,26 @@
+/**
+ * @author les membres de l'equipe
+ * @version 1.0
+ */
 
 public class Kuplet {
     private int score = 0;
     private Case[] tableau;
     private int k;
 
+    /**
+     * constructeur d'un Kuplet
+     * @param n la longueur d'un Kuplet
+     */
     public Kuplet(int n) {
         this.tableau = new Case[n];
         this.k = n;
     }
 
+    /**
+     * methode d'evaluation d'un Kuplet
+     * @return le score du Kuplet
+     */
     public int evaluate() {
         if (this.evaluateX() == 0 && this.evaluateO() == 1) {
             if (this.k <= 5) {
@@ -27,15 +39,17 @@ public class Kuplet {
         return this.score;
     }
 
+    /**
+     * calcule le score des Kuplets contenant X
+     * @return le score du Kuplet
+     */
     public int evaluateX() {
         int scoreX = 0;
-
         for(int i = 0; i < this.k; ++i) {
             if (this.tableau[i].getEtat() == 'X') {
                 scoreX += 2;
             }
         }
-
         if (this.k <= 5) {
             switch(scoreX) {
             case 2:
@@ -59,13 +73,15 @@ public class Kuplet {
                 scoreX = 800001;
             }
         }
-
         return scoreX;
     }
 
+    /**
+     * methode de calcul d'un Kuplet contenant des O
+     * @return le score du Kuplet
+     */
     public int evaluateO() {
         int scoreO = 1;
-
         for(int i = 0; i < this.k; ++i) {
             if (this.tableau[i].getEtat() == 'O') {
                 scoreO += 2;
@@ -99,18 +115,33 @@ public class Kuplet {
         return scoreO;
     }
 
+    /**
+     * getter 
+     * @return le score du Kuplet
+     */
     public int getScore() {
         return this.score;
     }
 
+    /**
+     * setter
+     * @param le nouveau score du Kuplet
+     */
     public void setScore(int score) {
         this.score = score;
     }
 
+    /**
+     * getter 
+     * @return le tableau des Cases du Kuplet
+     */
     public Case[] getTableau() {
         return this.tableau;
     }
-
+    /**
+     * setter
+     * @param le nouveau tableau de Kuplets
+     */
     public void setTableau(Case[] tableau) {
         this.tableau = tableau;
     }
