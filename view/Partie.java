@@ -28,6 +28,7 @@ public class Partie {
     	frame = new JFrame("Gomoku");
     	frame.setVisible(true);
     	frame.setSize(700,700);
+		frame.setLocationRelativeTo(null);
     	ImageIcon img = new ImageIcon("./icone.png");
     	frame.setIconImage(img.getImage());
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
