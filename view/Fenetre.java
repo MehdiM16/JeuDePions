@@ -13,18 +13,20 @@ import java.io.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.lang.Math.*;
+
 /**
 *cette classe est le code de l'interface graphique de l'acceuil du jeu
 *@author les membres du projet
 **/
-
 public class Fenetre extends JFrame{
-    
+   
+    // ici les différentes JPanel pour chaque nouvelle page
     JPanel menu = new JPanel();
     JPanel gomoku= new JPanel();
     JPanel puissancek= new JPanel();
     
-    JTextField pseudo=new JTextField("pseudo");
+	//les élements que l'on vas utilisée pour la configuration des pages
+	JTextField pseudo=new JTextField("pseudo");
     JButton entrer=new JButton("Jouer");
     
     
@@ -79,13 +81,14 @@ public class Fenetre extends JFrame{
 	bgomoku. setPreferredSize(new Dimension(250,55));
 	
 	//pour panel gomoku
-	for(int i=1; i<41;i++) {
+	for(int i=1; i<41;i++) { 
+		//boucle qui permet de remplir les JComboBox utilisée pour demander les dimensions et nombre k
 	    kG.addItem(i);
 	    longG.addItem(i);
 	    largG.addItem(i);
 	    
 	}
-	
+	//configuration des JComboBox
 	kG.addItemListener(new ItemState());
 	kG.setPreferredSize(new Dimension(100, 20));
 	kG.setForeground(Color.blue);
@@ -95,18 +98,19 @@ public class Fenetre extends JFrame{
 	largG.addItemListener(new ItemState());
 	largG.setPreferredSize(new Dimension(100, 20));
 	largG.setForeground(Color.blue);
-	
+	// activation du bouton qui permet le retour au menu par le biais addActionListener  
     	this.retour.addActionListener(new EcouteurBoutonRetourMenu ());
     	
-    	//Pour la panel puissancek
-    	
-    	
+    	//Pour la panel puissancek 
+    
 	for(int i=1; i<41;i++) {
+		//boucle qui rempli les JComboBox qui indique les dimensions et nombre k
 	    kGp.addItem(i);
 	    longGp.addItem(i);
 	    largGp.addItem(i);
 	    
 	}
+	//Configuration des JComboBox
 	kGp.addItemListener(new ItemState());
 	kGp.setPreferredSize(new Dimension(100, 20));
 	kGp.setForeground(Color.blue);
@@ -116,14 +120,18 @@ public class Fenetre extends JFrame{
 	largGp.addItemListener(new ItemState());
 	largGp.setPreferredSize(new Dimension(100, 20));
 	largGp.setForeground(Color.blue);
-    	
+    	//activation du bouton qui mène au menu bar le biais de la fonction EcouteurBoutonRetourMenu
 	this.retourp.addActionListener(new EcouteurBoutonRetourMenu ());
     	
-    	// pour le menu d entrer    	    
+    	
+		// pour le menu d'entrer   
+		
+		//activation des différents éléments qui constitue le menu par le biais d' ActionListener 	  
       	this.entrer.addActionListener(new textPseudo());
     	this.bpuissancek.addActionListener(new EcouteurBoutonPuissancek());
     	this.bgomoku.addActionListener(new EcouteurBoutonGomoku());
 	
+		//Ajout des élément à la JPanel du menu d'acceuil
         this.menu.add(label); 
         this.menu.add(espace);
         this.menu.add(p);
@@ -133,13 +141,18 @@ public class Fenetre extends JFrame{
 	
         this.setContentPane(this.menu);
         
-        //panel gomoku
-        JLabel longeurT=new JLabel("  longueur  ");
+	 
+	//panel gomoku
+	
+	//Jlabel dont l'on vas utiliser pour la JPanelde Gomoku
+    JLabel longeurT=new JLabel("  longueur  ");
 	JLabel largeurT=new JLabel("  largeur  ");
 	JLabel nbrkT =new JLabel(" nombre de pions à aligner ");
 	
 	JLabel regleP=new JLabel("Regles du Jeu");
 	JLabel regle1=new JLabel("Du Gomoku: ");
+	JLabel espa =new JLabel("                                                            ");
+	//configuration de celle-ci
 	regleP.setFont(new Font(Font.SERIF, Font.ITALIC,105));
 	
 	regle1.setFont(new Font(Font.SERIF, Font.ITALIC,70));
@@ -147,16 +160,18 @@ public class Fenetre extends JFrame{
 	JLabel reglePK= new JLabel( "<html>"+"Le but du jeu est d'etre le premier à avoir "
 				    +" une ligne de k pions."+"<br>"+
 				    "Ici k est le nombre de pions a aligner."+"<br>"+
-				    " Avec k qui ne doit pas etre superieur à la longueur et à la largeur du plateau." + "<br>"
+				    " Avec k qui ne doit pas etre superieur à la longueur et à la largeur"+
+					"du plateau." + "<br>"
 				    + " Pour commencer la partie veuillez completer: "+"</br></html>");    
 	regle1.setFont(new Font(Font.SERIF, Font.ITALIC,60));
 	reglePK.setFont(new Font(Font.SERIF, Font.ITALIC,20));
-	
-	
+
+	espa.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,100));
+
+	// ajout d'elements a la panel pour Gomoku
 	gomoku.add(regleP);
 	gomoku.add(regle1);
-	JLabel espa =new JLabel("                                                            ");
-	espa.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,100));
+	
 	
 	gomoku.add(reglePK);       
 	gomoku.add(espa);
@@ -176,29 +191,31 @@ public class Fenetre extends JFrame{
 	
 	//panel puissancek:
 	
+	//JLabel utilisée pour la panel qui présente le Puissancek 
 	JLabel longeurp=new JLabel("  longueur  ");
 	JLabel largeurp=new JLabel("  largeur  ");
 	JLabel nbrkp =new JLabel(" nombre de pions à alignier ");
 	
 	JLabel reglep=new JLabel("Regles du Jeu");
 	JLabel reglepp=new JLabel("Du PuissanceK: ");
+	JLabel espap =new JLabel("                                                            ");
+	
+	//configurationde celle-ci
+	
 	reglep.setFont(new Font(Font.SERIF, Font.ITALIC,105));
-	
-	
 	JLabel reglePp= new JLabel( "<html>"+"Le but du jeu est d'etre le premier à avoir "
 				    +"k pions alignes."+"<br>"+" Il vous suffit de selectionner une colonne"+"<br>"
 				    +"car les pions tombent par gravitee"+"<br>"+
 				    "Ici k est le nombre de pions à aligner."+"<br>"+
-				    "Avec k qui ne doit pas etre superieur à la longueur et à la largeur du plateau." + "<br>"
+				    "Avec k qui ne doit pas etre superieur à la longueur et à la largeur du plateau." 					+ "<br>"
 				    + "Pour commencer la partie veuillez completer: "+"</br></html>");    
 	reglepp.setFont(new Font(Font.SERIF, Font.ITALIC,80));
 	reglePp.setFont(new Font(Font.SERIF, Font.ITALIC,20));
-	
-	
+	espap.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,100));
+
+	//ajout des elements de la JPanel puissancek	
 	puissancek.add(reglep);
 	puissancek.add(reglepp);
-	JLabel espap =new JLabel("                                                            ");
-	espap.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,100));
 
 	puissancek.add(reglePp);       
 	puissancek.add(espap);
@@ -215,16 +232,14 @@ public class Fenetre extends JFrame{
 	this.puissancek.add(retourp);
        
 
-	//Couleur des panels (pour voir le changement)
+	//Couleur des panels 
         
         this.puissancek.setBackground(Color.BLUE);
         this.menu.setBackground(Color.lightGray);
         this.gomoku.setBackground(Color.pink);
         
-      
 
-
-    }
+    } //fin du constructeur de la classe
     
     class ItemState implements ItemListener{
         public void itemStateChanged(ItemEvent e) {
