@@ -241,15 +241,27 @@ public class Fenetre extends JFrame{
 
     } //fin du constructeur de la classe
     
+	//Classe interne implémentant ItemListener qui me permet d'utiliser 
+	//les données réecuperé par les JComboBox 
     class ItemState implements ItemListener{
-        public void itemStateChanged(ItemEvent e) {
+    
+	/**
+	*methode qui fait appel aux getteurs des dimension; elle est appeler par les JComboBox
+	*de dimensions et du nombre de k,
+	*@ param e de type ItemEvent, qui est le nombre selectionner dans une JComboBox
+	**/ 
+	public void itemStateChanged(ItemEvent e) {
 	    getK();
 	    getLarg();
 	    getLong();
 
         }               
     }
-    
+   
+    /**
+	*ces trois methodes sont des getteurs qui retournent EN Integer les elements 
+	*selectionner dans les JComboBox 
+	**/
     public int getK() {
 	int a=xk.getSelectedItem().hashCode(); 
     
