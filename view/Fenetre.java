@@ -1,3 +1,6 @@
+package view;
+
+import model.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,10 +8,11 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import model.*;
+
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.lang.Math.*;
 
 
 public class Fenetre extends JFrame{
@@ -33,20 +37,20 @@ public class Fenetre extends JFrame{
     
     //pour panel Gomoku:
     JButton retour= new JButton("retour");
-    JButton ok=new JButton("entrez");
-    private JComboBox longG = new JComboBox();
-    private JComboBox largG = new JComboBox();
-    private JComboBox kG = new JComboBox();
+    JButton ok=new JButton("entrer");
+    private JComboBox<Integer> longG = new JComboBox<Integer>();
+    private JComboBox<Integer> largG = new JComboBox<Integer>();
+    private JComboBox<Integer> kG = new JComboBox<Integer>();
     //Pour panel puissancek:
     JButton retourp= new JButton("retour");
-    JButton okp=new JButton("entrez");
-    private JComboBox longGp = new JComboBox();
-    private JComboBox largGp = new JComboBox();
-    private JComboBox kGp = new JComboBox();
+    JButton okp=new JButton("entrer");
+    private JComboBox<Integer> longGp = new JComboBox<Integer>();
+    private JComboBox<Integer> largGp = new JComboBox<Integer>();
+    private JComboBox<Integer> kGp = new JComboBox<Integer>();
 
     
     public Fenetre(){
-        //ParamÃ¨tres de la fenetre
+        //Parametre de la fenetre
         super("Jeu De Pion");
         this.setSize(900, 600);
         this.setLocationRelativeTo(null);
@@ -71,10 +75,7 @@ public class Fenetre extends JFrame{
 	bpuissancek. setPreferredSize(new Dimension(250,55));
 	bgomoku. setPreferredSize(new Dimension(250,55));
 	
-	//pour panel gomoku 
-	largG.addItem(" ");
-	longG.addItem(" ");
-	kG.addItem(" ");
+	//pour panel gomoku
 	for(int i=1; i<41;i++) {
 	    kG.addItem(i);
 	    longG.addItem(i);
@@ -97,9 +98,6 @@ public class Fenetre extends JFrame{
     	//Pour la panel puissancek
     	
     	
-	largGp.addItem(" ");
-	longGp.addItem(" ");
-	kGp.addItem(" ");
 	for(int i=1; i<41;i++) {
 	    kGp.addItem(i);
 	    longGp.addItem(i);
@@ -133,19 +131,21 @@ public class Fenetre extends JFrame{
         this.setContentPane(this.menu);
         
         //panel gomoku
-        JLabel longeurT=new JLabel("  longeur  ");
+        JLabel longeurT=new JLabel("  longueur  ");
 	JLabel largeurT=new JLabel("  largeur  ");
-	JLabel nbrkT =new JLabel(" nombre de pions a  alignier ");
+	JLabel nbrkT =new JLabel(" nombre de pions à aligner ");
 	
-	JLabel regleP=new JLabel("Regles du Jeux");
+	JLabel regleP=new JLabel("Regles du Jeu");
 	JLabel regle1=new JLabel("Du Gomoku: ");
 	regleP.setFont(new Font(Font.SERIF, Font.ITALIC,105));
 	
 	regle1.setFont(new Font(Font.SERIF, Font.ITALIC,70));
 	
-	JLabel reglePK= new JLabel( "<html>"+"Le but du jeux est d'etre le premier a  avoir "
-				    +" lignie k pions."+"<br>"+ "Ici k est le nombre de pions a alignier"+"</br>"
-				    + ". Pour commencer la partie veuillez completer: "+"</br></html>");    
+	JLabel reglePK= new JLabel( "<html>"+"Le but du jeu est d'etre le premier à avoir "
+				    +" une ligne de k pions."+"<br>"+
+				    "Ici k est le nombre de pions a aligner."+"<br>"+
+				    " Avec k qui ne doit pas etre superieur à la longueur et à la largeur du plateau." + "<br>"
+				    + " Pour commencer la partie veuillez completer: "+"</br></html>");    
 	regle1.setFont(new Font(Font.SERIF, Font.ITALIC,60));
 	reglePK.setFont(new Font(Font.SERIF, Font.ITALIC,20));
 	
@@ -173,19 +173,20 @@ public class Fenetre extends JFrame{
 	
 	//panel puissancek:
 	
-	JLabel longeurp=new JLabel("  longeur  ");
+	JLabel longeurp=new JLabel("  longueur  ");
 	JLabel largeurp=new JLabel("  largeur  ");
-	JLabel nbrkp =new JLabel(" nombre de pions a  alignier ");
+	JLabel nbrkp =new JLabel(" nombre de pions à alignier ");
 	
-	JLabel reglep=new JLabel("Regles du Jeux");
+	JLabel reglep=new JLabel("Regles du Jeu");
 	JLabel reglepp=new JLabel("Du PuissanceK: ");
 	reglep.setFont(new Font(Font.SERIF, Font.ITALIC,105));
 	
 	
-	JLabel reglePp= new JLabel( "<html>"+"Le but du jeux est d'etre le premier a  avoir "
-				    +"k pions alignes."+"<br>"+" Il vous suffit de selelectionner une colonne"+"<br>"
+	JLabel reglePp= new JLabel( "<html>"+"Le but du jeu est d'etre le premier à avoir "
+				    +"k pions alignes."+"<br>"+" Il vous suffit de selectionner une colonne"+"<br>"
 				    +"car les pions tombent par gravitee"+"<br>"+
-				    "Ici k est le nombre de pions a  alignier."+"<br>"
+				    "Ici k est le nombre de pions à aligner."+"<br>"+
+				    "Avec k qui ne doit pas etre superieur à la longueur et à la largeur du plateau." + "<br>"
 				    + "Pour commencer la partie veuillez completer: "+"</br></html>");    
 	reglepp.setFont(new Font(Font.SERIF, Font.ITALIC,80));
 	reglePp.setFont(new Font(Font.SERIF, Font.ITALIC,20));
@@ -315,26 +316,29 @@ public class Fenetre extends JFrame{
     
     
     public class Ecouteurokp implements ActionListener{
-        public void actionPerformed(ActionEvent clic) {
-            dispose(); 
-            new Partie(new PuissanceK(getLong(),getLarg(),getK())); 
-      
+	public void actionPerformed(ActionEvent clic) {
+	    if(getK() < Math.max(getLarg(),getLong())) {
+		dispose(); 
+		new Partie(new PuissanceK(getLong(),getLarg(),getK()));
+	    }
+	    
         }
     }
-   public class Ecouteurok implements ActionListener{
-	   public void actionPerformed(ActionEvent clic){
-		   dispose();
-		   new Partie(new Jeu(getLong(),getLarg(),getK()));
-	   }
-   }
-  
+    public class Ecouteurok implements ActionListener{
+	public void actionPerformed(ActionEvent clic){
+	    if(getK() < Math.max(getLarg(),getLong())) {
+		dispose();
+		new Partie(new Jeu(getLong(),getLarg(),getK()));
+	    }
+	}
+    }
+    
     
     //Lanceur
     public static void main(String[] args){
         Fenetre fen = new Fenetre();
-     
-      
+	
+	
     }
 }
-
 
