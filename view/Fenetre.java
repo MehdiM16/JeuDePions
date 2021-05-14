@@ -13,7 +13,10 @@ import java.io.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.lang.Math.*;
-
+/**
+*cette classe est le code de l'interface graphique de l'acceuil du jeu
+*@author les membres du projet
+**/
 
 public class Fenetre extends JFrame{
     
