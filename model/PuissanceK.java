@@ -119,7 +119,7 @@ public class PuissanceK extends Jeu {
 	}
 	
 	
-	public int casePossible(int colonne) {
+	public int casePossible(int colonne) {//fonction qui renvoie la ligne ou le pion est cense tomber dans la colonne donner en parametre
 		Case[][] tmp = p.getTableau();
 		int ligne = longueur - 1;
 		while(tmp[ligne][colonne].getEtat() != ' ' && ligne >= 0) {
