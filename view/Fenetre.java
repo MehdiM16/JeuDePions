@@ -281,7 +281,7 @@ public class Fenetre extends JFrame{
     public class textPseudo implements ActionListener{
 	/**
 	*methode qui réecupère le pseudo taper avec le Jboutton 
-	*@param clic qui est le bouton qui vas 
+	*@param clic qui est le clic du bouton ou l utilisateur clic aprés avoir taper son pseudo
 	**/
         public void actionPerformed(ActionEvent clic) {
 	    String user=pseudo.getText();
@@ -302,7 +302,7 @@ public class Fenetre extends JFrame{
         }  
     }
 	/**
-
+	* methode qui permet le passage à la panel puissancek grace au Jboutton
 	**/
     public void allerPuissancek(){
         this.setContentPane(this.puissancek);
@@ -315,7 +315,7 @@ public class Fenetre extends JFrame{
 	xlong=longGp;
         this.revalidate();
     }
-  
+  // methode qui peermet le passsage à la panel de gomoku 
     public void allerGomoku(){
         this.setContentPane(this.gomoku);
         pseudo.setVisible(false);
@@ -332,7 +332,7 @@ public class Fenetre extends JFrame{
         this.revalidate();
         
     }
-    //Ecouteur de ton bouton
+    //classe interne pour l'ecouteur de ton bouton
     public class EcouteurBoutonPuissancek implements ActionListener{
         public void actionPerformed(ActionEvent clic) {
 	    Fenetre.this.allerPuissancek();
@@ -353,11 +353,12 @@ public class Fenetre extends JFrame{
         }
     }
     
-    
+    // Classes internes et methodes pour que les JButton "entrez" lance la partie
     public class Ecouteurokp implements ActionListener{
 	public void actionPerformed(ActionEvent clic) {
 	    if(getK() < Math.max(getLarg(),getLong())) {
 		dispose(); 
+		
 		new Partie(new PuissanceK(getLong(),getLarg(),getK()));
 	    }
 	    
