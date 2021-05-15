@@ -275,15 +275,21 @@ public class Fenetre extends JFrame{
 	int a= xlong.getSelectedItem().hashCode();
 	return a ;
     }
-   
+   /**
+	*classe interne qui permet l'utilisation du pseudo entrer pour le texte de bienvenue
+   **/
     public class textPseudo implements ActionListener{
+	/**
+	*methode qui réecupère le pseudo taper avec le Jboutton 
+	*@param clic qui est le bouton qui vas 
+	**/
         public void actionPerformed(ActionEvent clic) {
 	    String user=pseudo.getText();
 	    JLabel J = new JLabel("   Bienvenue "+user+"! Veuillez selectionner votre jeu:                ");
 	    J.setBounds(20,50,20,20);
 	    J.setFont(new Font(Font.SANS_SERIF, Font.HANGING_BASELINE,30));
- 
-	    menu.add(J);
+	 // ajout et paramétrage de visibilité des elements 
+	    menu.add(J); //J qui est le JLabel du texte de bienvenue
 	    menu.add(espace);
 	    menu.add(bpuissancek);
 	    menu.add(bgomoku);
@@ -295,6 +301,9 @@ public class Fenetre extends JFrame{
 	    entrer.setVisible(false);
         }  
     }
+	/**
+
+	**/
     public void allerPuissancek(){
         this.setContentPane(this.puissancek);
     
