@@ -118,25 +118,17 @@ public class Partie {
     public void bot_joue() {//fonction qui definit le bouttons "bot Joue" pour faire jouer le bot quand c'est son tour
 	Random r = new Random();
     	if(!game.aquiletour && !victoire()) {
-	    if (game.p.sameScore()) {
-		game.p.initNbKuplets(game.k);
-		XY res = game.p.getCaseMieuxPlacee();
-		botTour.addActionListener((event) -> {game.tourOrdinateur(res.x, res.y); draw();});
-	    }
-	    else {
-		ArrayList<XY> maxEvals = game.getMaxEvals();
-		ArrayList<XY> bestEvals = game.getBestEvals(maxEvals); 
-		int rand = r.nextInt(bestEvals.size());
-		XY choice = bestEvals.get(rand);	
-		botTour.addActionListener((event) -> {
-			game.tourOrdinateur(choice.x, choice.y);
-			System.out.println("L'ordinateur a joué sur ("+choice.x+","+" "+choice.y+")"); 
-			draw();
-		    });
-	    }
+	    ArrayList<XY> maxEvals = game.getMaxEvals();
+	    ArrayList<XY> bestEvals = game.getBestEvals(maxEvals); 
+	    int rand = r.nextInt(bestEvals.size());
+	    XY choice = bestEvals.get(rand);	//on recupere les coordonne de la case la mieux place pour jouer 
+	    botTour.addActionListener((event) -> {
+		    game.tourOrdinateur(choice.x, choice.y); //fait jouer le bot a cette case
+		    draw();
+		});
     	}
     	else {
-	    botTour.setEnabled(false);
+	    botTour.setEnabled(false);//si la partie est finis ou que ce n'est pas au tour du bot de jouer on desactive le boutton
     	}
     }
     
@@ -149,16 +141,16 @@ public class Partie {
     	int highEval = game.getHighEval();
     	if (highEval==maxX) {
 	    JLabel label = new JLabel("Vous avez gagné félicitation");
-	    panel.add(label, BorderLayout.SOUTH);
+	    panel.add(label, BorderLayout.SOUTH);//si le joueur a gagne on ajoute ce label au bas de la page pour lui indiquer qu'il a gagner
 	    return true;
 	} else if (highEval==maxY) {
 	    JLabel label = new JLabel("Vous avez perdu");
-	    panel.add(label, BorderLayout.SOUTH);
+	    panel.add(label, BorderLayout.SOUTH);//si le bot a gagne on ajoute ce label au bas de la page pour lui indiquer que le bot a gagner
 	    return true;
 	}
 	if (game.pasDeCaseVide()) {
 	    JLabel label = new JLabel("La partie est nulle");
-	    panel.add(label, BorderLayout.SOUTH);
+	    panel.add(label, BorderLayout.SOUTH);//si la partie est nulle on ajoute ce label au bas de la page pour  l'indiquer au joueur
 	    return true;
 	}
 	return false;
