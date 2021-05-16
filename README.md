@@ -2,7 +2,7 @@ Pendant le 4ème semestre nous avons développé notre version du jeu de pions e
 Nous avons séparé les parties model et vue pour plus de clarté. L'interface graphique a été développée avec Java Swing. Notre programme est divisé en plusieurs classes (principe de la programmation orientée objet) et nous avons fait en sorte qu'il soit le plus "propre" possible (avec des indentations, des commentaires, ...). Le code sera également muni d'une Javadoc qui permet d'obtenir une documentation complète de chaque classe et de chaque fonction sur une page au format HTML (comme pour l'API Java).
 
 Compilation du projet :
-Pour l'interface textuelle (dossier model), on fait javac NewDriver.java puis java NewDriver.
+Pour l'interface textuelle (dossier jeudepions), on fait javac model/*.java puis java model/NewDriver.
 Pour l'interface graphique (dossier jeudepions), on fait javac model/*.java view/*.java puis java view/Fenetre
 
 Ressenti :
