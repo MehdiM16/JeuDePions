@@ -22,9 +22,11 @@ public class NewDriver {
 		int [] tab = new int [4];
 		while (true) {	// boucler
 			try {
-				System.out.println("Bonjour, vous allez jouer au Gomoku contre l'ordi. Quelle sera la longueur du plateau ?");
+				System.out.println("Bonjour, vous allez jouer au Gomoku contre l'ordi. Quelle sera la longueur du plateau (entre 1 et 40)?");
 				tab[0] = Integer.parseInt(sc.next());
-				break;	// s'il y a pas d'erreur de saisie alors conserver la longueur et arreter la boucle
+				if(tab[0] > 0 && tab[0] <= 40)
+				    break;	// s'il y a pas d'erreur de saisie alors conserver la longueur et arreter la boucle
+				else System.out.println("Taille incorrect");
 			} catch (Exception e) {
 				System.out.println("Erreur! "+e.getMessage());
 			}
@@ -33,7 +35,9 @@ public class NewDriver {
 			try {
 				System.out.println("Très bien, et sa largeur ?");
 				tab[1] = Integer.parseInt(sc.next());
-				break;	// s'il y a pas d'erreur de saisie alors conserver la largeur et arreter la boucle
+				if(tab[1] > 1 && tab[1] <= 40)
+				    break;	// s'il y a pas d'erreur de saisie alors conserver la largeur et arreter la boucle
+				else System.out.println("Taille incorrect");
 			} catch (Exception e) {
 				System.out.println("Erreur! "+e.getMessage());
 			}
@@ -42,7 +46,9 @@ public class NewDriver {
 			try {
 				System.out.println("Combien de pions à aligner pour gagner ?");
 				tab[2] = Integer.parseInt(sc.next());
-				break;	// s'il y a pas d'erreur de saisie alors conserver le nombre de pions et arreter la boucle
+				if((tab[2] <= tab[0] && tab[2] > 0) || (tab[2] <= tab[1] && tab[2] > 0))
+				    break;	// s'il y a pas d'erreur de saisie alors conserver le nombre de pions et arreter la boucle
+				else System.out.println("Nombre de pions à aligner incorrect");
 			} catch (Exception e) {
 				System.out.println("Erreur! "+e.getMessage());
 			}
