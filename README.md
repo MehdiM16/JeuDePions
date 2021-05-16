@@ -5,6 +5,10 @@ Compilation du projet :
 Pour l'interface textuelle (dossier jeudepions), on fait javac model/*.java puis java model/NewDriver.
 Pour l'interface graphique (dossier jeudepions), on fait javac model/*.java view/*.java puis java view/Fenetre
 
+Comment jouer :
+-Interface textuelle : Il faut répondre au question posé sur le terminal pour donner les dimensions du plateau souhaité. Puis de donner les coordonnée des lignes et colonnes de la case de la case sur laquel on souhaite jouer
+-Interface graphique : Il faut choisir puis un pseudo puis le jeu souhaité nous sera demander, enfin on pourras alors choisir les dimensions du plateau que l'on souhaite. En partie, pour jouer il suffit de cliquer sur la case que l'on souhaite pour jouer et cette case deviendras alors rouge (pour le puissanceK il suffit de cliquer sur n'importe quel case de la colonne que l'on souhaite). Pour que le bot joue il suffit de cliquer sur le boutton "bot Joue" situé en haut de la page (le boutton est desactiver lorsque ce n'est pas au tour du bot), le bot jouera alors sur la case la plus mieux placé et cette case deviendra bleu.
+
 Ressenti :
 (Mehdi) Personnellement, ce projet a été intéressant car dans la continuité de l'UE prépro au S3. Toutefois il a été un peu compliqué à gérer car il fallait également travailler et réviser les cours des autres matières. Certaines semaines nous ne pouvions pas avancer sur le projet malheureusement. Personnellement j’ai utilisé ce que j’avais appris en cours mais sur certaines choses j’ai du me renseigner sur Internet.
 
